@@ -15,29 +15,16 @@
         <input type="submit" name="buscador" value="Buscar"></input>
     
     </form>
-    {% for item in items %}
-        {% if item.tipo == tipo_form and item.ubicacion == ubicacion_form %}
-                <br>  
-                {{ item.tipo }}
-                <br>
-                {{ item.ubicacion }}
-                <br>
-                {{ item.precio }}
-                <br><br>
-        {% elif item.tipo == tipo_form %}
-                <br>  
-                {{ item.tipo }}
-                <br>
-                {{ item.ubicacion }}
-                <br>
-                {{ item.precio }}
-                <br><br> 
         
-        {% endif %}
-    {% endfor %}
-        
-    
-    
+    {% if d %}   
+    {% for i in d %} 
+      
+        {{i.tipo}}
+        {{i.ubicacion}}
+        {{i.edo}}
+        <br>
+    {% endfor %} 
+    {% endif %} 
 
 </body>
 </html>
