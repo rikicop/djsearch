@@ -4,6 +4,14 @@ import pandas as pd
 import json 
 
 def home(request):
+    items = Inmueble.objects.all()
+    df= pd.DataFrame(list(Inmueble.objects.all().values()))
+    json_records = df.reset_index().to_json(orient ='records')
+    data = []
+
+    data = json.loads(json_records) 
+    context = {'d': data} 
+
     if request.method =="POST":
         
         tipo_form = request.POST['tipof']
@@ -91,6 +99,6 @@ def home(request):
 
     else:
 
-        return render(request, 'home.html')
+        return render(request, 'home.html', context)
     
-    return render(request, 'home.html')
+    return render(request, 'home.html', context)
